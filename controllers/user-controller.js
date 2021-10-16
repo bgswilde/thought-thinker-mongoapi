@@ -22,10 +22,10 @@ const userController = {
     // GET route to get a single user by id ... /api/users/:id
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
-            // .populate({
-            //     path: 'thoughts',
-            //     select: '-__v'
-            // })
+            .populate({
+                path: 'thoughts',
+                select: '-__v'
+            })
             .select('-__v')
             .then(dbUserData => {
                 // Send a 404 message if no user exists with the specified id
