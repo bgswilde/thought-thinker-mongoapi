@@ -1,0 +1,24 @@
+{
+  "name": "thought-thinker-mongoapi",
+  "version": "1.0.0",
+  "description": "An API using MongoDB for a social networking application called Thought Thinker, where users can post their thoughts, react to others thoughts, and engage with other thinkers.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgswilde/thought-thinker-mongoapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgswilde/thought-thinker-mongoapi/issues"
+  },
+  "homepage": "https://github.com/bgswilde/thought-thinker-mongoapi#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.11"
+  }
+}
