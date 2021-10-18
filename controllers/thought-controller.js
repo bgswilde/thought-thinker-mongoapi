@@ -73,7 +73,7 @@ const thoughtController = {
             });
     },
 
-    // DELETE route to delete thought ... /api/thoughts/<userId>/<thoughtId>
+    // DELETE route to delete thought ... /api/thoughts/:userId/:thoughtId
     removeThought({ params }, res) {
         Thought.findOneAndDelete({ _id: params.thoughtId })
             .then(deletedThought => {
@@ -83,7 +83,7 @@ const thoughtController = {
                 }
                 return User.findOneAndUpdate(
                     { _id: params.userId },
-                    { $pull: { thoughts: {thoughtId: params.thoughtId } } },
+                    { $pull: { thoughts: { _id: params.thoughtId } } },
                     { new: true }
                 )
             })
