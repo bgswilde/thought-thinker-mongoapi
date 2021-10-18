@@ -71,7 +71,42 @@ const userController = {
                 console.log(err);
                 res.status(400).json(err);
             });
+    },
+    // POST route to add a friend to a user's friend list ... /api/users/:userId/friends/:friendId
+    addFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.userId },
+            { $push: { friends: params.friendId } },
+            { new: true }
+        )
+            .then(dbUserData => {
+                // Send a 404 message if no user exists with the specified id
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'I think you may have the wrong info... no thinker found.'});
+                    return;
+                }
+                res.json(dbUserData);
+            })
+            .catch(err => res.json(err));
+    },
+
+    // DELETE route to remove a friend from a user's friend list ... /api/users/:userId/friends/:friendId
+    removeFriend({ params }, res) {
+        User.findOneAndUpdate(
+            { _id: params.userId },
+            { $pull: { friends: params.friendId } },
+            { new: true }
+        )
+            .then(dbUserData => {
+                // Send a 404 message if no user exists with the specified id
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'I think you may have the wrong info... no thinker found.'});
+                    return;
+                }
+                res.json(dbUserData);
+            })
+            .catch(err => res.json(err));
     }
-};
+}
 
 module.exports = userController

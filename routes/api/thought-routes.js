@@ -9,6 +9,8 @@ const {
     removeReaction
 } = require('../../controllers/thought-controller');
 
+// all thought routes following the route /api/thoughts
+
 // for the get all route ... /api/thoughts
 router.route('/').get(getAllThoughts);
 
